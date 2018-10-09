@@ -23,7 +23,7 @@ export class Lists extends React.Component {
 							label={list.label}
 							hideCreateButton={isNoCreate}
 							href={href}
-							count={plural(this.props.counts[listKey], '* Item', '* Items')}
+							count={plural(this.props.counts[listKey], '*', '*')}
 							spinner={this.props.spinner}
 						/>
 					);

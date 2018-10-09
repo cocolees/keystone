@@ -1,7 +1,8 @@
 var utils = require('keystone-utils');
 var session = require('../../../../lib/session');
+var fs = require('fs')
 
-function signin (req, res) {
+function signin(req, res) {
 	var keystone = req.keystone;
 	if (!keystone.security.csrf.validate(req)) {
 		return res.apiError(403, 'invalid csrf');
@@ -17,6 +18,9 @@ function signin (req, res) {
 				if (err) return res.status(500).json({ error: 'pre:signin error', detail: err });
 				user._.password.compare(req.body.password, function (err, isMatch) {
 					if (isMatch) {
+						/* save logs */
+						saveLogs(req, user);
+
 						session.signinWithUser(user, req, res, function () {
 							keystone.callHook(user, 'post:signin', req, function (err) {
 								if (err) return res.status(500).json({ error: 'post:signin error', detail: err });
@@ -36,6 +40,25 @@ function signin (req, res) {
 			return res.status(401).json({ error: 'invalid details' });
 		}
 	});
+}
+
+function saveLogs(req, user) {
+	ip = req.headers['x-real-ip'] ||
+		req.headers['x-forwarded-for'] ||
+		req.socket.remoteAddress || '';
+	if (ip.split(',').length > 0) {
+		ip = ip.split(',')[0];
+	}
+	let agent = req.headers['user-agent'];
+	let userId = user._id;
+	let params = {
+		userName: userId,
+		loginIp: ip,
+		loginRemark: agent,
+	};
+	keystone.list('LoginLogs').model(params).save((err, result) => {
+	})
+	return;
 }
 
 module.exports = signin;

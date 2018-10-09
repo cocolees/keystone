@@ -64,11 +64,18 @@ module.exports = function (req, res) {
 		if (err) {
 			res.logError('admin/server/api/list/get', 'database error finding items', err);
 			return res.apiError('database error', err);
-		}
-
+        }
 		return res.json({
 			results: includeResults
 				? items.map(function (item) {
+                    // get read status
+                    if(req.list.options.isRead === true && req.user){
+                        if(item.read.indexOf(req.user.id) === -1){
+                            item.read = 'Unread'
+                        } else {
+                            item.read = 'Read'
+                        }
+                    }
 					return req.list.getData(item, fields, req.query.expandRelationshipFields);
 				})
 				: undefined,

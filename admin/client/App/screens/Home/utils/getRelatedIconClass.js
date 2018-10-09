@@ -7,17 +7,17 @@
  */
 export default function getRelatedIconClass (string) {
 	const icons = [
-		{ icon: 'book', sections: ['books', 'posts', 'blog', 'blog-posts', 'stories', 'news-stories', 'content'] },
-		{ icon: 'briefcase', sections: ['businesses', 'companies', 'listings', 'organizations', 'partners'] },
-		{ icon: 'calendar', sections: ['events', 'dates'] },
+		{ icon: 'book', sections: ['books', 'posts', 'blog', 'blog-posts', 'stories', 'news-stories', 'content', 'siteContent'] },
+		{ icon: 'briefcase', sections: ['businesses', 'companies', 'listings', 'organizations', 'partners', 'event', 'jobs'] },
+		{ icon: 'calendar', sections: ['events', 'dates', 'jobsAndEvents'] },
 		{ icon: 'clock', sections: ['classes', 'hours', 'times'] },
 		{ icon: 'file-media', sections: ['gallery', 'galleries', 'images', 'photos', 'pictures'] },
 		{ icon: 'file-text', sections: ['attachments', 'docs', 'documents', 'files'] },
 		{ icon: 'location', sections: ['locations', 'markers', 'places'] },
-		{ icon: 'mail', sections: ['emails', 'enquiries'] },
-		{ icon: 'megaphone', sections: ['broadcasts', 'jobs', 'talks'] },
-		{ icon: 'organization', sections: ['contacts', 'customers', 'groups', 'members', 'people', 'speakers', 'teams', 'users'] },
-		{ icon: 'package', sections: ['boxes', 'items', 'packages', 'parcels'] },
+		{ icon: 'mail', sections: ['emails', 'enquiries', 'emailMarketing'] },
+		{ icon: 'megaphone', sections: ['broadcasts', 'talks', 'contactForm'] },
+		{ icon: 'organization', sections: ['contacts', 'customers', 'groups', 'members', 'people', 'speakers', 'teams', 'users', 'admin', 'userManagement', 'candidates', 'employer'] },
+		{ icon: 'package', sections: ['boxes', 'items', 'packages', 'parcels', 'system'] },
 		{ icon: 'tag', sections: ['tags'] },
 	];
 	const classes = icons

@@ -244,7 +244,6 @@ const ListView = React.createClass({
 					availableColumns={this.props.currentList.columns}
 					handleSortSelect={this.handleSortSelect}
 					title={`
-						${numeral(items.count).format()}
 						${pluralize(items.count, ' ' + singular, ' ' + plural)}
 					`}
 				/>

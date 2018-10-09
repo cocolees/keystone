@@ -100,7 +100,7 @@ var ListSort = React.createClass({
 		return (
 			<span>
 				{activeSortPath && (
-					<span>
+					<span className="list-sorted-by">
 						<span style={{ color: '#999' }}> sorted by </span>
 						<a id="listHeaderSortButton" href="javascript:;" onClick={this.openPopout}>
 							{activeSortPath.label.toLowerCase()}

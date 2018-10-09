@@ -30,8 +30,8 @@ exports.plural = function (count, sn, pl) {
 		count = Number(count);
 	} else if (typeof count !== 'number') {
 		count = size(count);
-	}
-	return (count === 1 ? sn : pl).replace('*', count);
+    }
+	return (count === 1 ? sn : pl).replace('*', `(${count})`);
 };
 
 
